@@ -11,7 +11,7 @@ Ogni Peer sarà identificato da un nickname ed ognuno conoscerà la lista di Pee
 4. Dal Menù di Eclipse Run->Run
 
 # Contenuto del pacchetto HarmonySocialNetwork
-README.md
+README.md \n
 pom.xml
 src/main
 src/main/java
