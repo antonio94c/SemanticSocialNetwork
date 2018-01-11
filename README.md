@@ -11,13 +11,13 @@ Ogni Peer sarà identificato da un nickname ed ognuno conoscerà la lista di Pee
 4. Dal Menù di Eclipse Run->Run
 
 # Contenuto del pacchetto HarmonySocialNetwork
-README.md \n
-pom.xml
-src/main
-src/main/java
-src/main/java/it
-src/main/java/it/isislab
-src/main/java/it/isislab/p2p
+* README.md
+* pom.xml
+* src/main
+* src/main/java
+* src/main/java/it
+* src/main/java/it/isislab
+* src/main/java/it/isislab/p2p
 src/main/java/it/isislab/p2p/SemanticSocialNetwork
 src/main/java/it/isislab/p2p/SemanticSocialNetwork/MessageListener.java
 src/main/java/it/isislab/p2p/SemanticSocialNetwork/Peer_nick_address.java
