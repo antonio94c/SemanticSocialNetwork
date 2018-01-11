@@ -1,15 +1,42 @@
-# Semantic Harmony Social Network on P2P Network
+# Descrizione del progetto
+Semantic Harmony Social Network è un social network basato sull’interesse
+degli utenti che sfrutta una rete Pear-to-Peer. Il sistema colleziona il profilo
+degli utenti e automaticamente crea amicizie in accordo ad una strategia di matching basata sulle risposte ad un questionario che sarà generato dal primo Peer che accede alla rete e a cui saranno sottoposti, all’accesso, tutti i Peer.
+Ogni Peer sarà identificato da un nickname ed ognuno conoscerà la lista di Peer con cui condivide una relazione di amicizia.
 
-This project is developed and supported for the University of Salerno master class of Distributed Systems. It aims to show an example of the P2P framework/library TomP2P.
+# Guida all’installazione
+1. Dalla console digitare git clone HarmonySocialNetwork
+2. Avviare l’applicazione Eclipse
+3. Dal Menù di Eclipse, import->Maven->Existing Maven Projects
+4. Dal Menù di Eclipse Run->Run
 
-# Prerequisites of this example project
+# Contenuto del pacchetto HarmonySocialNetwork
+README.md
+pom.xml
+src/main
+src/main/java
+src/main/java/it
+src/main/java/it/isislab
+src/main/java/it/isislab/p2p
+src/main/java/it/isislab/p2p/SemanticSocialNetwork
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/MessageListener.java
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/Peer_nick_address.java
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/QuestionsInit.java
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/QuestionInitImpl.java
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/SemanticHarmonySocialNetwork.java
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/SemanticHarmonySocialNetworkImpl.java
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/TestSemanticHarmonySocialNetworkImpl.java
+src/main/java/it/isislab/p2p/SemanticSocialNetwork/JunitTest.java
 
-* Concurrent and Object-oriented programming fundamental (Threads and Observer pattern are required).
-* Distributed System foundamental (Distributed Hash Tables, DHT is required).
-* Java 7 or greater.
-* Apache Maven.
-* Eclipse (optional).
 
-# What is the Semantic Harmony Social Network?
+# Informazioni riguardo al tipo di licenza e il copyright
 
-Semantic Harmony Social Network is a social network, based on the users interests that exploits a P2P Network. The system collects the profiles of the users, and automatically creates friendships according to a matching startegy. The users can see its friends over the time and are automatically informed when a user enter in the social network and became a new potential friend. The system defines a set of questions, At this point the system can computes the user scoring according the answers. This scoring is elaborated by a matching strategy that automatically find out the friends. The system allows the users to see the social network questions, create a profile score according the answer, join in the network using a nickname and eventually see all user friends. 
+The MIT License (MIT)
+
+Copyright (c) 2018 Ivan Rizzo, Antonio Calabria, Lorenzo Vitale
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
