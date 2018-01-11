@@ -18,7 +18,6 @@ public class TestSemanticHarmonySocialNetworkImpl {
 				System.out.println(peerid+"] (Direct Message Received) "+obj);
 				return "success";
 			}
-			
 		}
 		
 		try {
@@ -38,8 +37,6 @@ public class TestSemanticHarmonySocialNetworkImpl {
 			peer0.putUserProfileQuestions(questions);
 			
 			ArrayList<Integer> answers=q.askQuestions((ArrayList<String>)peer0.getUserProfileQuestions());
-			
-
 			String profile_key=peer0.createAuserProfileKey(answers);
 			peer0.join(profile_key, "Pippo0");
 			

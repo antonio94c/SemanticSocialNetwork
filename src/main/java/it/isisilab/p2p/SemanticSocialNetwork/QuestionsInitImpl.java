@@ -41,7 +41,6 @@ public class QuestionsInitImpl implements QuestionsInit{
 				questions.add(str_q);
 			}
 		}
-		
 		return questions;
 	}
 	
