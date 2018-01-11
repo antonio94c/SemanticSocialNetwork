@@ -18,15 +18,15 @@ Ogni Peer sarà identificato da un nickname ed ognuno conoscerà la lista di Pee
 * src/main/java/it
 * src/main/java/it/isislab
 * src/main/java/it/isislab/p2p
-src/main/java/it/isislab/p2p/SemanticSocialNetwork
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/MessageListener.java
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/Peer_nick_address.java
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/QuestionsInit.java
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/QuestionInitImpl.java
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/SemanticHarmonySocialNetwork.java
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/SemanticHarmonySocialNetworkImpl.java
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/TestSemanticHarmonySocialNetworkImpl.java
-src/main/java/it/isislab/p2p/SemanticSocialNetwork/JunitTest.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/MessageListener.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/Peer_nick_address.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/QuestionsInit.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/QuestionInitImpl.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/SemanticHarmonySocialNetwork.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/SemanticHarmonySocialNetworkImpl.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/TestSemanticHarmonySocialNetworkImpl.java
+* src/main/java/it/isislab/p2p/SemanticSocialNetwork/JunitTest.java
 
 
 # Informazioni riguardo al tipo di licenza e il copyright
