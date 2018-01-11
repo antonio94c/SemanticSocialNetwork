@@ -1,4 +1,4 @@
-package it.isislab.p2p.SemanticSocialNetwork;
+package it.isisilab.p2p.SemanticSocialNetwork;
 
 import java.util.ArrayList;
 import java.util.Scanner;
