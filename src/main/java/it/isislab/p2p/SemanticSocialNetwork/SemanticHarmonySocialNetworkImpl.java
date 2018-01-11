@@ -66,54 +66,56 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 	}
 	
 	/**
-	 * Joins in the Network. An automatic messages to each potential new friend is generated.
-	 * @param _profile_key a String, the user profile key according the user answers
-	 * @param _nick_name a String, the nickname of the user in the network.
-	 * @return true if the join success, fail otherwise.
-	 */
-	public boolean join(String _profile_key,String _nick_name) {
-		try {
-			rooms.add(_profile_key);
-			
-			String opposto="";
-			for(int i=0;i<_profile_key.length();i++) {
-				if(_profile_key.charAt(i)=='0')
-					opposto=opposto+"1";
-				else
-					opposto=opposto+"0";
-			}
-			rooms.add(opposto);
-			
-			this.pna=new Peer_nick_address(_nick_name,_dht.peer().peerAddress());
-			
-			for(String room:rooms) {
-				FutureGet futureGet = _dht.get(Number160.createHash(room)).start();
-				futureGet.awaitUninterruptibly();
-				if (futureGet.isSuccess()) {
-					if(futureGet.isEmpty()) {
-						_dht.put(Number160.createHash(room)).data(new Data(new HashSet<String>())).start().awaitUninterruptibly();
-					}
-					futureGet = _dht.get(Number160.createHash(room)).start();
-					futureGet.awaitUninterruptibly();
-					if (futureGet.isSuccess()) {
-						HashSet<Peer_nick_address> peers_on_topic;
-						peers_on_topic = (HashSet<Peer_nick_address>) futureGet.dataMap().values().iterator().next().object();
-						peers_on_topic.add(pna);
-						_dht.put(Number160.createHash(room)).data(new Data(peers_on_topic)).start().awaitUninterruptibly();
-					}else {
-						return false;
-					}
-				}else {
-					return false;
-				}
-			}
-			return true;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+	   * Joins in the Network. An automatic messages to each potential new friend is generated.
+	   * @param _profile_key a String, the user profile key according the user answers
+	   * @param _nick_name a String, the nickname of the user in the network.
+	   * @return true if the join success, fail otherwise.
+	   */
+	  public boolean join(String _profile_key,String _nick_name) {
+	    try {
+	      rooms.add(_profile_key);
+	      
+	      String new_key="";
+	      for(int i=0;i<_profile_key.length();i++) {
+	        new_key=_profile_key;
+	        if(_profile_key.charAt(i)=='0')
+	          new_key=new_key.substring(0,i)+"1"+new_key.substring(i+1,new_key.length());
+	        else
+	          new_key=new_key.substring(0,i)+"0"+new_key.substring(i+1,new_key.length());
+	        rooms.add(new_key);
+	      }
+	      
+	      this.pna=new Peer_nick_address(_nick_name,_dht.peer().peerAddress());
+	      
+	      for(String room:rooms) {
+	        FutureGet futureGet = _dht.get(Number160.createHash(room)).start();
+	        futureGet.awaitUninterruptibly();
+	        if (futureGet.isSuccess()) {
+	          if(futureGet.isEmpty()) {
+	            _dht.put(Number160.createHash(room)).data(new Data(new HashSet<String>())).start().awaitUninterruptibly();
+	          }
+	          futureGet = _dht.get(Number160.createHash(room)).start();
+	          futureGet.awaitUninterruptibly();
+	          if (futureGet.isSuccess()) {
+	            HashSet<Peer_nick_address> peers_on_room;
+	            peers_on_room = (HashSet<Peer_nick_address>) futureGet.dataMap().values().iterator().next().object();
+	            peers_on_room.add(this.pna);
+	            _dht.put(Number160.createHash(room)).data(new Data(peers_on_room)).start().awaitUninterruptibly();
+	          }else {
+	            return false;
+	          }
+	        }else {
+	          return false;
+	        }
+	      }
+	      return true;
+	      
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	    return false;
+	  }
+
 	
 	/**
 	 * Gets the nicknames of all automatically creates friendships. 
