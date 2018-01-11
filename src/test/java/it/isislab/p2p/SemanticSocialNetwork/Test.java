@@ -1,9 +1,9 @@
-package it.isisilab.p2p.SemanticSocialNetwork;
+package it.isislab.p2p.SemanticSocialNetwork;
 
 import java.io.IOException;
 import java.util.List;
 
-import it.isisilab.p2p.SemanticSocialNetwork.*;
+import it.isislab.p2p.SemanticSocialNetwork.*;
 
 public class Test {
 	

@@ -1,8 +1,9 @@
-package it.isisilab.p2p.SemanticSocialNetwork;
+package it.isislab.p2p.SemanticSocialNetwork;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import it.isislab.p2p.SemanticSocialNetwork.SemanticHarmonySocialNetworkImpl;
 import junit.framework.TestCase;
 
 public class JunitTest extends TestCase {
