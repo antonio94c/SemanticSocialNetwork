@@ -243,7 +243,7 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 				HashSet<Peer_nick_address> peers_on_room;
 				peers_on_room = (HashSet<Peer_nick_address>) futureGet.dataMap().values().iterator().next().object();
 				for(Peer_nick_address p:peers_on_room) {
-					if(p.getNick().equals(this.pna.getNick())) {
+					if(p.getAddress().equals(this.pna.getAddress()) && p.getNick().equals(this.pna.getNick())) {
 						peers_on_room.remove(p);
 						break;
 					}
