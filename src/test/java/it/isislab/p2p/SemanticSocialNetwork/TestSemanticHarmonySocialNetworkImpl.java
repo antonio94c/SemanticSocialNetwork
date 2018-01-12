@@ -1,4 +1,4 @@
-package it.isisilab.p2p.SemanticSocialNetwork;
+package it.isislab.p2p.SemanticSocialNetwork;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.Test;
+
+import it.isislab.p2p.SemanticSocialNetwork.MessageListener;
+import it.isislab.p2p.SemanticSocialNetwork.SemanticHarmonySocialNetworkImpl;
 
 public class TestSemanticHarmonySocialNetworkImpl {
 	
