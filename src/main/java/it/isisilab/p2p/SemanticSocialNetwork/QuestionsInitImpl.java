@@ -48,7 +48,7 @@ public class QuestionsInitImpl implements QuestionsInit{
 	public ArrayList<Integer> askQuestions(ArrayList<String> q) {
 		
 		System.out.println("******************************************************************");
-		System.out.println("********************* Benvenuto Peer n. **************************");
+		System.out.println("*********************** Benvenuto Peer ***************************");
 		System.out.println("******************************************************************");
 		
 		answers = new ArrayList<Integer>();

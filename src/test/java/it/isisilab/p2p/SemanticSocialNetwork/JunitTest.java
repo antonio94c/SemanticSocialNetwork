@@ -31,6 +31,8 @@ public class JunitTest extends TestCase {
 			
 			SemanticHarmonySocialNetworkImpl peer3 = new SemanticHarmonySocialNetworkImpl(3, "127.0.0.1", new MessageListenerImpl(3));
 			
+			SemanticHarmonySocialNetworkImpl peer4 = new SemanticHarmonySocialNetworkImpl(4, "127.0.0.1", new MessageListenerImpl(4));
+			
 			//creo la lista di domande
 			ArrayList<String> questions=new ArrayList<String>();
 			questions.add("Ti piace il mare?");
@@ -119,6 +121,24 @@ public class JunitTest extends TestCase {
 			assertEquals(profile_key,profile_key_test);
 			
 			
+			assertEquals(questions,(ArrayList<String>)peer4.getUserProfileQuestions());
+			answers=new ArrayList<Integer>();
+			answers.add(1);
+			answers.add(1);
+			answers.add(1);
+			answers.add(1);
+			answers.add(0);
+			answers.add(1);
+			answers.add(1);
+			answers.add(1);
+			answers.add(1);
+			profile_key=peer4.createAuserProfileKey(answers);
+			peer4.join(profile_key, "Pippo4");
+			profile_key_test="111101111";
+			assertEquals(profile_key,profile_key_test);
+			
+			
+			
 			//stampo gli amici di ogni peer controllando che corrispondono a quelli previsti
 			ArrayList<String> friends=new ArrayList<String>();
 			
@@ -142,6 +162,7 @@ public class JunitTest extends TestCase {
 			}
 			
 			friendsTest=new ArrayList<String>();
+			friendsTest.add("Pippo4");
 			friends=(ArrayList<String>) peer2.getFriends();
 			assertEquals(friends,friendsTest);
 			System.out.println("amici di peer2");
@@ -157,6 +178,57 @@ public class JunitTest extends TestCase {
 			for(String friend:friends) {
 				System.out.println(friend);
 			}
+			
+			friendsTest=new ArrayList<String>();
+			friendsTest.add("Pippo2");
+			friends=(ArrayList<String>) peer4.getFriends();
+			assertEquals(friends,friendsTest);
+			System.out.println("amici di peer4");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			
+			
+			peer0.leaveNetwork();
+			System.out.println("peer0 è uscito dalla rete");
+			
+			
+			friendsTest=new ArrayList<String>();
+			friendsTest.add("Pippo3");
+			friends=(ArrayList<String>) peer1.getFriends();
+			assertEquals(friends,friendsTest);
+			System.out.println("amici di peer1");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			
+			friendsTest=new ArrayList<String>();
+			friendsTest.add("Pippo4");
+			friends=(ArrayList<String>) peer2.getFriends();
+			assertEquals(friends,friendsTest);
+			System.out.println("amici di peer2");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			
+			friendsTest=new ArrayList<String>();
+			friendsTest.add("Pippo1");
+			friends=(ArrayList<String>) peer3.getFriends();
+			assertEquals(friends,friendsTest);
+			System.out.println("amici di peer3");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			
+			friendsTest=new ArrayList<String>();
+			friendsTest.add("Pippo2");
+			friends=(ArrayList<String>) peer4.getFriends();
+			assertEquals(friends,friendsTest);
+			System.out.println("amici di peer4");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

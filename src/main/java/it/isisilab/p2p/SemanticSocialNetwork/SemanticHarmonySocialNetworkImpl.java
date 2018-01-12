@@ -158,7 +158,7 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 				futureGet.awaitUninterruptibly();
 				if (futureGet.isSuccess()) {
 					if(futureGet.isEmpty()) {
-						_dht.put(Number160.createHash(room)).data(new Data(new HashSet<String>())).start().awaitUninterruptibly();
+						_dht.put(Number160.createHash(room)).data(new Data(new HashSet<Peer_nick_address>())).start().awaitUninterruptibly();
 					}
 					futureGet = _dht.get(Number160.createHash(room)).start();
 					futureGet.awaitUninterruptibly();
@@ -212,7 +212,7 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 						peers_on_room = (HashSet<Peer_nick_address>) futureGet.dataMap().values().iterator().next().object();
 						for(Peer_nick_address peer:peers_on_room){
 							if(peer.getNick().equals(this.pna.getNick())) {
-								break;
+								continue;
 							}
 							flag=false;
 							for(String friend:friends) {
@@ -233,5 +233,36 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 			}
 		return null;
 	}
+	
+	private boolean leaveRooms(String room) {
+		try {
+			FutureGet futureGet = _dht.get(Number160.createHash(room)).start();
+			futureGet.awaitUninterruptibly();
+			if (futureGet.isSuccess()) {
+				if(futureGet.isEmpty()) return false;
+				HashSet<Peer_nick_address> peers_on_room;
+				peers_on_room = (HashSet<Peer_nick_address>) futureGet.dataMap().values().iterator().next().object();
+				for(Peer_nick_address p:peers_on_room) {
+					if(p.getNick().equals(this.pna.getNick())) {
+						peers_on_room.remove(p);
+						break;
+					}
+				}
+				_dht.put(Number160.createHash(room)).data(new Data(peers_on_room)).start().awaitUninterruptibly();
+				return true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean leaveNetwork() {	
+		for(String room:rooms) leaveRooms(room);
+		_dht.peer().announceShutdown().start().awaitUninterruptibly();
+		return true;
+	}
+	
+	
 	
 }

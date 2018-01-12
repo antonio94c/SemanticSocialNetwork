@@ -76,6 +76,28 @@ public class TestSemanticHarmonySocialNetworkImpl {
 				System.out.println(friend);
 			}
 			
+			
+			peer1.leaveNetwork();
+			System.out.println("peer1 è uscito dalla rete");
+			
+			
+			friends=(ArrayList<String>) peer0.getFriends();
+			System.out.println("amici di peer0");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			friends=(ArrayList<String>) peer2.getFriends();
+			System.out.println("amici di peer2");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			friends=(ArrayList<String>) peer3.getFriends();
+			System.out.println("amici di peer3");
+			for(String friend:friends) {
+				System.out.println(friend);
+			}
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
