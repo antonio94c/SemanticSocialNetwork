@@ -1,7 +1,7 @@
 # Semantic Harmony Social Network
 
 ## Descrizione del progetto
-Semantic Harmony Social Network è un social network basato sull’interesse degli utenti che sfrutta una rete Pear-to-Peer. 
+Semantic Harmony Social Network è un social network basato sull’interesse degli utenti che sfrutta una rete Peer-to-Peer. 
 Il sistema colleziona il profilo degli utenti e automaticamente crea amicizie in accordo ad una strategia di matching basata sulle risposte ad un questionario che sarà generato dal primo Peer che accede alla rete e a cui saranno sottoposti, all’accesso, tutti i Peer.
 Ogni Peer sarà identificato da un nickname ed ognuno conoscerà la lista di Peer con cui condivide una relazione di amicizia.
 
