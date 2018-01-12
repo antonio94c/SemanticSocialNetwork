@@ -3,6 +3,10 @@ package it.isislab.p2p.SemanticSocialNetwork;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import it.isislab.p2p.SemanticSocialNetwork.MessageListener;
+import it.isislab.p2p.SemanticSocialNetwork.QuestionsInitImpl;
+import it.isislab.p2p.SemanticSocialNetwork.SemanticHarmonySocialNetworkImpl;
+
 
 public class TestSemanticHarmonySocialNetworkImpl {
 

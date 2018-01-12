@@ -24,8 +24,8 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 	final private int DEFAULT_MASTER_PORT=4000;
 	final private String KEY_QUESTIONS_ROOM="question";
 	
-	private Peer_nick_address pna=null;
-	private ArrayList<String> rooms=null;
+	private Peer_nick_address pna;
+	private ArrayList<String> rooms;
 	
 
 	public SemanticHarmonySocialNetworkImpl( int _id, String _master_peer, final MessageListener _listener) throws IOException{
@@ -48,9 +48,9 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 	
 	
 	/**
-	 * Inserisce nella rete la lista delle domande da fare ai nuovi utenti per stabilire le amicizie, viene richiamato solo dal primo peer che crea la rete
-	 * @param questions una lista di domande
-	 * @return true se è andato a buon fine, false altrimenti
+	 * Puts the social network users questions.
+	 * @param questions a list of questions
+	 * @return true if the put success, fail otherwise.
 	 */
 	public boolean putUserProfileQuestions(List<String> questions){
 		try {
@@ -82,8 +82,8 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 	}
 	
 	/**
-	 * Restituisce la lista delle domande a cui l'utente deve rispondere per creare le amicizie.
-	 * @return la lista delle domande.
+	 * Gets the social network users questions.
+	 * @return a list of String that is the profile questions.
 	 */
 	public List<String> getUserProfileQuestions(){
 		ArrayList<String> questions = new ArrayList<String>();
@@ -105,9 +105,9 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 	}
 	
 	/**
-	 * Crea la chiave in base alle risposte date dall'utente.
-	 * @param _answer la lista delle risposte.
-	 * @return la chiave del nodo generata in base alle risposte date.
+	 * Creates a new user profile key according the user answers.
+	 * @param _answer a list of answers.
+	 * @return a String, the obtained profile key.
 	 */
 	public String createAuserProfileKey(List<Integer> _answer) {
 		String profileKey="";
@@ -117,12 +117,11 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 		return profileKey;
 	}
 	
-	
 	/**
-	 * Genera le stanze degli amici in base alla chiave del nodo, diventano amici i nodi che hanno risposto alle domande allo stesso modo o con al più una domanda di differenza
-	 * @param profile_key la chiave del nodo generata in base alle risposte date.
+	 * Generates room keys by changing a bit of the node's key. For example, for key 111 it generates 111,011,101,110.
+	 * @param profile_key a String, the user profile key according the user answers
 	 */
-	private void generate_rooms(String profile_key){
+	private void generateRooms(String profile_key){
 		rooms=new ArrayList<String>();
 		rooms.add(profile_key);
 		
@@ -138,16 +137,16 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 	}
 	
 	/**
-	 * Il nodo si unisce alla rete e viene generato un messaggio automatico per ogni potenziale amico.
-	 * @param _profile_key la chiave del nodo generata in base alle risposte date.
-	 * @param _nick_name in nickname dell'utente.
-	 * @return true se il join va a buon fine, false altrimenti.
+	 * Joins in the Network. An automatic messages to each potential new friend is generated.
+	 * @param _profile_key a String, the user profile key according the user answers
+	 * @param _nick_name a String, the nickname of the user in the network.
+	 * @return true if the join success, fail otherwise.
 	 */
 	public boolean join(String _profile_key,String _nick_name) {
 		ArrayList<String> nick_sended=new ArrayList<String>();
 		boolean flag=false;
 		
-		generate_rooms(_profile_key);
+		generateRooms(_profile_key);
 		
 		this.pna=new Peer_nick_address(_nick_name,_dht.peer().peerAddress());
 		nick_sended.add(pna.getNick());
@@ -197,8 +196,8 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 	}
 	
 	/**
-	 * Restituisce dei nickname degli amici del nodo. 
-	 * @return la lista degli amici.
+	 * Gets the nicknames of all automatically creates friendships. 
+	 * @return a list of String.
 	 */
 	public List<String> getFriends(){
 			ArrayList<String> friends = new ArrayList<String>();
@@ -257,6 +256,10 @@ public class SemanticHarmonySocialNetworkImpl implements SemanticHarmonySocialNe
 		return false;
 	}
 	
+	/**
+	 * The node leaves the rooms of which it is part and leaves the network.
+	 * @return true if the leave success.
+	 */
 	public boolean leaveNetwork() {	
 		for(String room:rooms) leaveRooms(room);
 		_dht.peer().announceShutdown().start().awaitUninterruptibly();
